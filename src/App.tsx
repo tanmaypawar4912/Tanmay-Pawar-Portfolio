@@ -243,15 +243,53 @@ function App() {
           </div>
         </section>
 
-        <div className="marquee-strip" aria-hidden="true">
+        {/* Responsive, seamless technology marquee. Styling is scoped to this strip. */}
+        <style>{`
+          .marquee-strip {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: tanmay-marquee-scroll 30s linear infinite;
+            will-change: transform;
+          }
+          .marquee-group {
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+          }
+          .marquee-group > span {
+            flex: 0 0 auto;
+          }
+          @keyframes tanmay-marquee-scroll {
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(-50%, 0, 0); }
+          }
+          .marquee-strip:hover .marquee-track,
+          .marquee-strip:focus-within .marquee-track {
+            animation-play-state: paused;
+          }
+          @media (max-width: 768px) {
+            .marquee-track { animation-duration: 20s; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .marquee-track { animation: none; }
+          }
+        `}</style>
+        <div className="marquee-strip" aria-label="Technology skills">
           <div className="marquee-track">
-            {[...Array(2)].flatMap((_, copyIndex) =>
-              ['REACT', 'TYPESCRIPT', 'NODE.JS', 'MONGODB', 'FASTAPI', 'AI PRODUCTS'].map((item) => (
-                <span key={`${copyIndex}-${item}`}>
-                  {item}<i>✦</i>
-                </span>
-              )),
-            )}
+            {[0, 1].map((copyIndex) => (
+              <div className="marquee-group" key={copyIndex} aria-hidden={copyIndex === 1}>
+                {['REACT', 'TYPESCRIPT', 'NODE.JS', 'MONGODB', 'FASTAPI', 'AI PRODUCTS'].map((item) => (
+                  <span key={`${copyIndex}-${item}`}>
+                    {item}<i aria-hidden="true">✦</i>
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -478,9 +516,45 @@ function App() {
         </section>
 
         {selectedProject && (
-          <div className="project-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedProject(null) }}>
-            <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-              <button className="project-modal-close" type="button" onClick={() => setSelectedProject(null)} aria-label="Close project details"><Close /></button>
+          <div
+            className="project-modal-backdrop"
+            role="presentation"
+            onMouseDown={(event) => { if (event.target === event.currentTarget) setSelectedProject(null) }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1000,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              overflowY: 'auto',
+              padding: '88px 16px 20px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <section
+              className="project-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-modal-title"
+              style={{
+                position: 'relative',
+                zIndex: 1001,
+                width: 'min(100%, 830px)',
+                maxHeight: 'calc(100dvh - 108px)',
+                overflowY: 'auto',
+                boxSizing: 'border-box',
+                margin: '0 auto',
+                paddingTop: '64px',
+              }}
+            >
+              <button
+                className="project-modal-close"
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
+                style={{ position: 'absolute', top: '12px', right: '16px', zIndex: 1002 }}
+              ><Close /></button>
               <div className="section-label"><Sparkles width={15} /> Project details</div>
               {selectedProject === 'careerforge' && <>
                 <span className="project-modal-index">01 / AI CAREER PLATFORM</span>
