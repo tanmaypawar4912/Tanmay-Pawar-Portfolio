@@ -124,7 +124,7 @@ function App() {
           <span className="brand-mark">TP</span>
           <span>
             <strong>Tanmay Pawar</strong>
-            <small>React.js Developer</small>
+            <small>MERN Stack Developer</small>
           </span>
         </a>
 
@@ -192,7 +192,7 @@ function App() {
             <div className="hero-copy">
               <div className="eyebrow"><Sparkles width={17} /> Hello, I’m Tanmay.</div>
               <h1>
-                React.js <br />
+                MERN Stack <br />
                 <span>Developer</span>
               </h1>
               <p>
