@@ -124,7 +124,7 @@ function App() {
           <span className="brand-mark">TP</span>
           <span>
             <strong>Tanmay Pawar</strong>
-            <small>Full Stack Developer</small>
+            <small>React.js Developer</small>
           </span>
         </a>
 
@@ -192,13 +192,11 @@ function App() {
             <div className="hero-copy">
               <div className="eyebrow"><Sparkles width={17} /> Hello, I’m Tanmay.</div>
               <h1>
-                Full-Stack <br />
-                <span>Developer &amp;</span> <br />
-                AI Builder
+                React.js <br />
+                <span>Developer</span>
               </h1>
               <p>
-                I build responsive web products,with clean,<br/> deployment-ready code.
-              practical backend<br/> systems and AI-powered experiences<br />
+                I build responsive web applications with clean interfaces, modern frontend tools, and reliable backend integrations.
               </p>
               <div className="hero-buttons">
                 <a className="primary-button" href="#projects">
@@ -217,16 +215,6 @@ function App() {
               </div>
               <div className="floating-tag floating-tag-left">React + TypeScript</div>
               <div className="floating-tag floating-tag-right">AI Applications</div>
-            </div>
-
-            <div className="hero-stat">
-              <span>Building</span>
-              <strong>Useful digital products</strong>
-              <div className="stat-line">
-                <span>Responsive</span>
-                <span>Scalable</span>
-                <span>Human-focused</span>
-              </div>
             </div>
 
             <div className="hero-socials" aria-label="Social links">
@@ -433,14 +421,10 @@ function App() {
                   aria-label="CareerForge AI project preview"
                 >
                   <img
+                    className="project-preview-image"
                     src="/carrerForge-preview.jpeg"
                     alt="CareerForge AI website screenshot"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="project-card-content">
@@ -461,14 +445,10 @@ function App() {
                   aria-label="AutoLux project preview"
                 >
                   <img
+                    className="project-preview-image"
                     src="/autoLux-preview.jpg"
                     alt="AutoLux website screenshot"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="project-card-content">
@@ -490,14 +470,10 @@ function App() {
                   aria-label="TaskFlow project preview"
                 >
                   <img
+                    className="project-preview-image"
                     src="/TaskFlow-preview.jpg"
                     alt="TaskFlow website screenshot"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                    }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="project-card-content">

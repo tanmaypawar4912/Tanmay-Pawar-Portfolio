@@ -3207,6 +3207,159 @@ main {
     width: 40px;
     height: 40px;
   }
+}/* =========================================
+   PROJECT MODAL — NAVBAR GAP FIX
+   ========================================= */
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* Navbar पासून gap */
+  padding: 88px 16px 20px;
+
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.project-modal {
+  position: relative;
+  z-index: 101;
+
+  width: min(100%, 830px);
+
+  /* Modal viewport मध्ये बसेल */
+  max-height: calc(100dvh - 108px);
+  overflow-y: auto;
+
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  /* Close button आणि heading मध्ये space */
+  padding: 60px 32px 32px;
+}
+
+/* Close button */
+.project-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: 102;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 560px) {
+  .project-modal-backdrop {
+    padding: 92px 10px 12px;
+    align-items: flex-start;
+  }
+
+  .project-modal {
+    width: 100%;
+    max-height: calc(100dvh - 104px);
+
+    padding: 62px 18px 24px;
+    border-radius: 20px;
+  }
+
+  .project-modal-close {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .project-modal-backdrop {
+    padding: 88px 8px 10px;
+  }
+
+  .project-modal {
+    max-height: calc(100dvh - 98px);
+    padding: 58px 14px 20px;
+  }
+}/* =========================================
+   TECHNOLOGY STRIP — RESPONSIVE MARQUEE
+   ========================================= */
+
+.tech-strip {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tech-strip-track {
+  display: flex;
+  width: max-content;
+  animation: tech-strip-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.tech-strip-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.tech-strip-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+
+  min-width: 150px;
+  padding: 16px 24px;
+
+  white-space: nowrap;
+}
+
+.tech-strip-star {
+  flex-shrink: 0;
+}
+
+/* Continuous left-to-right loop */
+@keyframes tech-strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause when user hovers */
+.tech-strip:hover .tech-strip-track {
+  animation-play-state: paused;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .tech-strip-track {
+    animation-duration: 20s;
+  }
+
+  .tech-strip-item {
+    min-width: 125px;
+    gap: 28px;
+    padding: 14px 18px;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .tech-strip-track {
+    animation: none;
+  }
 }
 }
 
@@ -3221,5 +3374,183 @@ main {
 
   .project-modal {
     animation: none
+  }
+}
+
+/* =========================================================
+   HERO LAYOUT UPDATE — desktop portrait aligned to the right
+   Keeps the existing visual system while separating text and image.
+   ========================================================= */
+@media (min-width: 821px) {
+  .hero-card {
+    min-height: 660px;
+  }
+
+  .hero-copy {
+    top: 50%;
+    bottom: auto;
+    left: clamp(28px, 3.2vw, 48px);
+    width: min(43%, 490px);
+    transform: translateY(-46%);
+  }
+
+  .hero-copy h1 {
+    max-width: 470px;
+    font-size: clamp(48px, 5vw, 76px);
+    line-height: 0.98;
+  }
+
+  .hero-copy p {
+    max-width: 410px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .hero-buttons {
+    margin-top: 24px;
+  }
+
+  .portrait-stage {
+    top: 28px;
+    right: 3.5%;
+    left: auto;
+    width: min(47%, 540px);
+    height: calc(100% - 28px);
+    transform: none;
+  }
+
+  .portrait-arch {
+    right: 0;
+    left: 0;
+    height: min(89%, 590px);
+  }
+
+  .portrait-arch img {
+    bottom: -92px;
+    width: 104%;
+  }
+
+  .floating-tag-left {
+    top: 190px;
+    left: -22px;
+  }
+
+  .floating-tag-right {
+    top: 104px;
+    right: -12px;
+  }
+
+  .hero-ghost {
+    top: 88px;
+    left: 72%;
+    font-size: clamp(76px, 10vw, 148px);
+  }
+
+  .hero-orbit-one {
+    left: calc(72% - 285px);
+  }
+
+  .hero-orbit-two {
+    left: calc(72% - 220px);
+  }
+}
+
+@media (min-width: 821px) and (max-width: 1020px) {
+  .hero-card {
+    min-height: 620px;
+  }
+
+  .hero-copy {
+    width: 44%;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(44px, 5.2vw, 58px);
+  }
+
+  .hero-copy p {
+    font-size: 12px;
+  }
+
+  .portrait-stage {
+    right: 2%;
+    width: 48%;
+  }
+
+  .floating-tag-left {
+    left: -8px;
+  }
+
+  .floating-tag-right {
+    right: -4px;
+  }
+}
+
+
+/* Preserve the existing desktop project-preview treatment after moving
+   the previous inline image styles into a reusable class. */
+.project-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================================
+   MOBILE-ONLY LAYOUT POLISH
+   Keeps desktop presentation unchanged.
+   ========================================================= */
+@media (max-width: 760px) {
+  /* Let project screenshots keep their real proportions instead of
+     leaving an empty min-height area below the image. */
+  .project-card-visual {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+    display: block;
+    padding: 0;
+  }
+
+  .project-preview-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Center the footer's back-to-top action on phone/tablet layouts. */
+  .footer a {
+    justify-self: center;
+    align-self: center;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Show the complete About portrait inside its frame on small screens.
+     The original desktop crop/positioning is left untouched. */
+  .about-portrait {
+    width: min(100%, 360px);
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 1023 / 1537;
+    margin-inline: auto;
+  }
+
+  .about-portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    object-fit: contain;
+    object-position: center;
   }
 }
